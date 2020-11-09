@@ -1,5 +1,6 @@
 CREATE DATABASE warehouse;
 USE warehouse;
+SHOW TABLE STATUS WHERE Name = 'goods';
 
 DROP TABLE storekeeper;
 
@@ -67,3 +68,11 @@ ALTER TABLE goods
 
 SELECT *
 FROM goods;
+
+INSERT INTO goods
+VALUES (1, 1, "Тушеная говядина", "Высший сорт"),
+       (2, 1, "Гречневая каша", "Первый сорт"),
+       (3, 2, "Гвозди 100", "Сталь МГ"),
+       (4, 3, "Роклайт", "Плотность 35"),
+       (5, 3, "Техноэласт", "низ"),
+       (6, 5, "Карандаш", "НВ");
