@@ -21,8 +21,8 @@ CREATE TABLE squads
 
 CREATE TABLE offices
 (
-    of_id INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
-    office INT(3) NOT NULL,
+    of_id      INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+    office     INT(3)          NOT NULL,
     created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_at  TIMESTAMP       NOT NULL DEFAULT '0000-00-00 00:00:00',
     PRIMARY KEY (of_id)
@@ -99,7 +99,7 @@ CREATE TABLE squad_has_office
 (
     sho_id     int(1)          NOT NULL AUTO_INCREMENT,
     f_s_id     INT(1) UNSIGNED NOT NULL,
-    f_of_id     INT(1) UNSIGNED NOT NULL,
+    f_of_id    INT(1) UNSIGNED,
     created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_at  TIMESTAMP       NOT NULL DEFAULT '0000-00-00 00:00:00',
     PRIMARY KEY (sho_id),
@@ -111,6 +111,65 @@ CREATE TABLE squad_has_office
         ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
+INSERT INTO employee
+    (e_name)
+VALUES ('Петров В.А.'),
+       ('Лодарев П.С.'),
+       ('Леонтьев К.В.'),
+       ('Духов Р.М.');
 
+INSERT INTO squads
+    (squad)
+VALUES (200),
+       (212),
+       (222),
+       (232);
 
+INSERT INTO employee_has_squad
+    (f_e_id, f_s_id)
+VALUES (1, 3),
+       (2, 4),
+       (3, 2),
+       (4, 1);
+
+INSERT INTO offices
+    (office)
+VALUES (201),
+       (205),
+       (221);
+
+INSERT INTO squad_has_office
+    (f_s_id, f_of_id)
+VALUES (1, null),
+       (2, 1),
+       (3, 2),
+       (4, 3);
+
+INSERT INTO weapons
+    (w_type)
+VALUES ('Глок 20'),
+       ('AK-47'),
+       ('AK-74');
+
+INSERT INTO officers
+    (o_name, o_title)
+VALUES ('Буров О.С.', 'Майор'),
+       ('Рыбаков Н.Г.', 'Майор'),
+       ('Деребанов В.Я', 'Подполковник');
+
+INSERT INTO weapon_has_officer
+(f_w_id, f_o_id)
+VALUES (1, 2),
+       (2, 1),
+       (3, 3);
+
+INSERT INTO employee_has_weapon
+(f_e_id, f_w_id)
+VALUES (1, 1),
+       (1, 2),
+       (2, 1),
+       (2, 3),
+       (3, 1),
+       (3, 2),
+       (4, 2);
 
